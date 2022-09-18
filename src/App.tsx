@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <header className="masthead bg-primary text-white text-center py-4">
+      <header className="masthead custom-primary text-white text-center py-4">
         <div className="container d-flex align-items-center flex-column">
           <h2>A React Online Store</h2>
         </div>

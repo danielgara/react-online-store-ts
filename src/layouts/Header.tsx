@@ -11,7 +11,7 @@ function Header() {
           <Link className="navbar-brand" to="/">
             Online Store
           </Link>
-          <Nav className="me-auto">
+          <Nav className="justify-content-end">
             <Link className="nav-link" to="/">
               Home
             </Link>
