@@ -5,7 +5,7 @@ class Product {
     private description: string;
     private price: number;
 
-    public constructor(id: number, name: string, image: string, description: string, price: number ) {
+    public constructor(id: number, name: string, image: string, description: string, price: number) {
         this.id = id;
         this.name = name;
         this.image = image;
