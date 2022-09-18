@@ -1,8 +1,8 @@
 function Footer() {
   return (
-    <footer className="text-center text-lg-start bg-light text-muted mt-4">
+    <footer className="copyright mt-4 text-center text-white">
       <div className="text-center p-4">
-        Copyright -{" "}
+        Copyright 2022 -{" "}
         <a
           target="_blank"
           className="text-reset fw-bold text-decoration-none"

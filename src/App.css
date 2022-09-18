@@ -32,6 +32,10 @@
   background-color: #1abc9c;
 }
 
+.copyright {
+  background-color: #1a252f;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
