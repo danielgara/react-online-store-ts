@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "./layouts/Header";
-import Footer from "./layouts/Footer";
+import Header from "./partials/Header";
+import Footer from "./partials/Footer";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
