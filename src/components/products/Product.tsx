@@ -3,18 +3,23 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 function ProductShow() {
+  const [product, setProduct] = useState(new Product(1,"","","",1));
   const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/products/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+         console.log(`http://localhost:4000/products/${id}`);
+         let product = new Product(data.id, data.name, data.image, data.description, data.price);
+         setProduct(product);
+      });
+  }, []);
+
   let gameImg = require("../../assets/images/game.png");
-
-  let products: Product[] = [];
-  products.push(new Product(1, "TV", "game.png", "Best TV", 1000));
-  products.push(new Product(2, "iPhone", "game.png", "Best iPhone", 999));
-  products.push(new Product(3, "Chromecast", "game.png", "Best Chromecast", 30));
-  products.push(new Product(4, "Glasses", "game.png", "Best Glasses", 100));
-
-  let product = products.find((i) => i.getId().toString() === id);
 
   if (product) {
     return (
