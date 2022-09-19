@@ -1,4 +1,5 @@
 import Product from "../../models/Product";
+import ProductService from "../../services/ProductService";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
@@ -10,14 +11,12 @@ function ProductShow() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-         console.log(`http://localhost:4000/products/${id}`);
-         let product = new Product(data.id, data.name, data.image, data.description, data.price);
-         setProduct(product);
-      });
-  }, []);
+    const fetchData = async () => {
+      setProduct(await ProductService.getProduct(id));
+    }
+
+    fetchData();
+  }, [id]);
 
   let gameImg = require("../../assets/images/game.png");
 

@@ -1,15 +1,22 @@
 import "./Products.css";
 import Row from "react-bootstrap/Row";
 import Product from "../../models/Product";
+import ProductService from "../../services/ProductService";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 function Products() {
-  let products: Product[] = [];
-  products.push(new Product(1, "TV", "game.png", "Best TV", 1000));
-  products.push(new Product(2, "iPhone", "game.png", "Best iPhone", 999));
-  products.push(new Product(3, "Chromecast", "game.png", "Best Chromecast", 30));
-  products.push(new Product(4, "Glasses", "game.png", "Best Glasses", 100));
+  let productList: Product[] = [];
+  const [products, setProducts] = useState(productList);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setProducts(await ProductService.getProducts());
+    }
+
+    fetchData();
+  }, []);
 
   const listOfProducts = [];
   let gameImg = require("../../assets/images/game.png");
@@ -28,6 +35,7 @@ function Products() {
       </div>,
     );
   }
+  
   return (
     <Row>
       {listOfProducts}
