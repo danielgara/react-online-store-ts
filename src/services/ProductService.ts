@@ -22,7 +22,7 @@ export default class ProductService {
 
     public static async getProduct(id: any): Promise<Product> {
         const res = await axios.get(
-            `http://localhost:4000/products/show/${id}`
+            `http://localhost:4000/products/${id}`
         );
         let product = new Product(
             res.data.id, 
