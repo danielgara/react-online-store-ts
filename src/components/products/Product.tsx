@@ -8,10 +8,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../reducers/cartSlice';
 import { AppDispatch } from '../../store/Store';
+import { useNavigate } from 'react-router-dom';
 
 function ProductShow() {
   const [product, setProduct] = useState(new Product(1,"","","",1));
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +26,15 @@ function ProductShow() {
   let gameImg = require("../../assets/images/game.png");
 
   const dispatch: AppDispatch = useDispatch();
+
+  function addProductToCart(id:any, name:any, price:any){
+    dispatch(addToCart({
+      id,
+      name,
+      price
+    }));
+    navigate('/cart');
+  }
 
   if (product) {
     return (
@@ -41,13 +52,14 @@ function ProductShow() {
               <h5 className="card-title">{product.getName()} (${product.getPrice()})</h5>
               <p className="card-text">{product.getDescription()}</p>
               <p className="card-text">
-              <button 
-                onClick={() => 
-                  dispatch(addToCart({
-                    id: product.getId(),
-                    name: product.getName()
-                  }))
-                }>Add to Cart
+              <button className="button-primary btn text-white"
+                onClick={
+                  () => addProductToCart(
+                    product.getId(), 
+                    product.getName(), 
+                    product.getPrice()
+                  )}>
+                Add to Cart
               </button>
               </p>
             </div>
@@ -59,4 +71,5 @@ function ProductShow() {
     return <Row>Product not found</Row>;
   }
 }
+
 export default ProductShow;

@@ -1,5 +1,3 @@
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { useSelector } from 'react-redux';
 
 function Cart() {
@@ -10,25 +8,36 @@ function Cart() {
 
   for (const product of cart) {
     listOfProductsInCart.push(
-      <div key={ product.id } className="row">
-        <div className="ms-auto">
-          <p className="lead text-justify">
-            { product.id } - { product.name } - { product.quantity }
-          </p>
-        </div>
-      </div>,
+      <tr key={ product.id }>
+          <td>{ product.id }</td>
+          <td>{ product.name }</td>
+          <td>${ product.price}</td>
+          <td>{ product.quantity }</td>
+      </tr>,
     );
   }
 
   return (
-    <Row>
-      <Col>
-        <h2 className="page-section-heading text-center text-uppercase h2-about">
-          Cart
-        </h2>
-        {listOfProductsInCart}
-      </Col>
-    </Row>
+    <div className="card">
+      <div className="card-header">
+        Products in Cart
+      </div>
+      <div className="card-body">
+        <table className="table table-bordered table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {listOfProductsInCart}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 
