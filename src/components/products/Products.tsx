@@ -23,7 +23,7 @@ function Products() {
 
   for (const product of products) {
     listOfProducts.push(
-      <div className="col-md-4 col-lg-3 mb-2">
+      <div key={ product.getId() } className="col-md-4 col-lg-3 mb-2">
         <div className="card">
           <Image src={gameImg} alt="Product Image" className="card-img-top img-card" />
           <div className="card-body text-center"> 

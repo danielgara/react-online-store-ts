@@ -5,6 +5,9 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../reducers/cartSlice';
+import { AppDispatch } from '../../store/Store';
 
 function ProductShow() {
   const [product, setProduct] = useState(new Product(1,"","","",1));
@@ -19,6 +22,8 @@ function ProductShow() {
   }, [id]);
 
   let gameImg = require("../../assets/images/game.png");
+
+  const dispatch: AppDispatch = useDispatch();
 
   if (product) {
     return (
@@ -36,7 +41,14 @@ function ProductShow() {
               <h5 className="card-title">{product.getName()} (${product.getPrice()})</h5>
               <p className="card-text">{product.getDescription()}</p>
               <p className="card-text">
-                <small className="text-muted">Add to Cart</small>
+              <button 
+                onClick={() => 
+                  dispatch(addToCart({
+                    id: product.getId(),
+                    name: product.getName()
+                  }))
+                }>Add to Cart
+              </button>
               </p>
             </div>
           </Col>

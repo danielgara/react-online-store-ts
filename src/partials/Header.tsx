@@ -18,6 +18,9 @@ function Header() {
             <Link className="nav-link" to="/products/">
               Products
             </Link>
+            <Link className="nav-link" to="/cart">
+              Cart
+            </Link>
             <Link className="nav-link" to="/about">
               About
             </Link>

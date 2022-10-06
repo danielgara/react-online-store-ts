@@ -7,6 +7,9 @@ import About from "../components/About";
 import Products from "../components/products/Products";
 import ProductShow from "../components/products/Product";
 
+/* Cart */
+import Cart from "../components/cart/Cart";
+
 function AppRoutes() {
   return (
     <Routes>
@@ -14,6 +17,7 @@ function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/products" element={<Products />} />
       <Route path="/products/:id" element={<ProductShow />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }
